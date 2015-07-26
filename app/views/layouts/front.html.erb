@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>99 Reviews</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+   
+        
+        <nav class="top-bar" data-topbar role="navigation">
+            <div class="large-10 large-centered columns">
+              <ul class="title-area">
+                <li class="name">
+                  <h1><a href="/">99 Reviews</a></h1>
+                </li>
+                 <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+                <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+              </ul>
+        
+              <section class="top-bar-section">
+                <!-- Right Nav Section -->
+                <ul class="left">
+                  
+                  <li class="has-dropdown">
+                    <a href="#">Categories</a>
+                    <ul class="dropdown">
+                        <% @headerCategories.each do |hCategory| %>
+                          <li><a href="/category/<%= hCategory.slug %>"> <%= hCategory.title %> </a></li>
+                        <% end %>
+                    </ul>
+                  </li>
+                </ul>
+            
+              </section>
+            </div>
+        </nav>
+    
+        
+            <%= yield %>
+        
+        
+   
+    
+    
+    <footer>
+        
+            <div class="large-12 footer-top">
+                <div class="row">
+                    
+                    <div class="large-3 columns">
+                        <div class="panel">
+                            <h4>Categories</h4>
+                            <ul class="side-nav">
+                              <% @footerCategories.each do |fCategory| %>
+                                  <li><a href="/category/<%= fCategory.slug %>"> <%= fCategory.title %> </a></li>
+                                <% end %>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="large-3 columns">
+                        <div class="panel">
+                            <h4>Top Categories</h4>
+                            <ul class="side-nav">
+                              <li><a href="#">Link 1</a></li>
+                              <li><a href="#">Link 2</a></li>
+                              <li><a href="#">Link 3</a></li>
+                              <li><a href="#">Link 4</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="large-3 columns">
+                        <div class="panel">
+                            <h4>Top Reviews</h4>
+                            <ul class="side-nav">
+                              <li><a href="#">Link 1</a></li>
+                              <li><a href="#">Link 2</a></li>
+                              <li><a href="#">Link 3</a></li>
+                              <li><a href="#">Link 4</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="large-3 columns">
+                        <div class="panel">
+                            <h4>Social</h4>
+                            <ul class="side-nav">
+                              <li><a href="#">Link 1</a></li>
+                              <li><a href="#">Link 2</a></li>
+                              <li><a href="#">Link 3</a></li>
+                              <li><a href="#">Link 4</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="large-12 text-center columns footer-bottom">
+                Copyright
+            </div>
+        </div>
+    </footer>
+   
+    <script>
+        $(document).foundation({
+          equalizer : {
+            equalize_on_stack: true
+          }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Reviewsapp</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+    <div class="row">
+        <div class="large-3 medium-3 columns">
+            <div class="panel">
+                 <ul class="side-nav" role="navigation" title="Link List">
+                   <li role="menuitem"> <%= link_to 'Reviews', reviews_path() %> </li>
+                   <li role="menuitem"><%= link_to 'Categories', categories_path() %></li>
+                   <li role="menuitem"><%= link_to 'Sub Categories', sub_categories_path() %></li>
+                   <li role="menuitem"><%= link_to 'Users', users_path() %></li>
+                   <li role="menuitem"><%= link_to 'Logout', :controller => "admin", :action => "logout" %></li>
+                 </ul>
+            </div>
+            
+        </div>
+        
+        <div class="large-9 medium-9 columns">
+            <%= yield %>
+        </div>
+        
+    
+    </div>
+   
+</body>
+</html>

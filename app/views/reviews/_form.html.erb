@@ -1,0 +1,94 @@
+<%= form_for(@review) do |f| %>
+  <% if @review.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
+
+      <ul>
+      <% @review.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :category_id %><br>
+    <%= f.collection_select :category_id, Category.all, :id, :title %>
+  </div>
+  <div class="field">
+    <%= f.label :sub_category_id %><br>
+    
+    <%= f.collection_select :sub_category_id, SubCategory.all, :id, :title %>
+  </div>
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :slug %><br>
+    <%= f.text_field :slug %>
+  </div>
+  <div class="field">
+    <%= f.label :score %><br>
+    <%= f.text_field :score %>
+  </div>
+  <div class="field">
+    <%= f.label :price %><br>
+    <%= f.text_field :price %>
+  </div>
+  <div class="field">
+    <%= f.label :features %><br>
+    <%= f.text_field :features %>
+  </div>
+  <div class="field">
+    <%= f.label :support %><br>
+    <%= f.text_field :support %>
+  </div>
+  <div class="field">
+    <%= f.label :short_description %><br>
+    <%= f.text_area :short_description %>
+  </div>
+  <div class="field">
+    <%= f.label :first_paragraph %><br>
+    <%= f.text_area :first_paragraph %>
+  </div>
+  <div class="field">
+    <%= f.label :second_paragraph %><br>
+    <%= f.text_area :second_paragraph %>
+  </div>
+  <div class="field">
+    <%= f.label :third_paragraph %><br>
+    <%= f.text_area :third_paragraph %>
+  </div>
+  <div class="field">
+    <%= f.label :top_features %><br>
+    <%= f.text_area :top_features %>
+  </div>
+  <div class="field">
+    <%= f.label :lowest_price %><br>
+    <%= f.text_field :lowest_price %>
+  </div>
+  <div class="field">
+    <%= f.label :image %><br>
+    <%= f.file_field :image %>
+  </div>
+  <div class="field">
+    <%= f.label :url %><br>
+    <%= f.text_field :url %>
+  </div>
+  <div class="field">
+    <%= f.label :total_viewed %><br>
+    <%= f.number_field :total_viewed %>
+  </div>
+  <div class="field">
+    <%= f.label :is_published %><br>
+    <%= f.select(:is_published, [["Yes", "yes"], ["No", "no"]]) %>
+  </div>
+  <div class="field">
+    <%= f.label :is_featured %><br>
+    <%= f.select(:is_featured, [["Yes", "yes"], ["No", "no"]]) %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

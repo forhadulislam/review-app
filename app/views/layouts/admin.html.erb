@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Reviewsapp</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+    <div class="row">
+        
+        <div class="large-4 large-centered medium-9 columns">
+            <%= yield %>
+        </div>
+    
+    </div>
+   
+</body>
+</html>

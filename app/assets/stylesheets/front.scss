@@ -1,0 +1,168 @@
+// Place all the styles related to the front controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import url(http://fonts.googleapis.com/css?family=Exo+2:400,200,300,100|Open+Sans:400,300);
+@import url(http://fonts.googleapis.com/css?family=Roboto:100,300|Roboto+Mono:300,100|Roboto+Slab:300,100);
+
+$font-weight: 300;
+$primary-color: #71B238;
+$primary-text-color: #ffffff;
+
+body{
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    background: #f1f1f1;
+    background: #efebe3;
+}
+h1,h2,h3,h4,h5,h6{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: $font-weight;
+}
+
+img.responsive {
+  width: 100%;
+}
+.panel{
+    background: #ffffff;
+}
+.panel:before, .panel:after{
+    display: table;
+    content: " ";
+}
+nav.top-bar{
+    padding: 0.5rem;
+    height: 4rem;
+    margin: 0;
+    ul {
+        li{
+            
+            a{
+                font-family: 'Open Sans';
+                font-size: 1.1em;
+                font-weight: 100;
+            }
+        }
+    }
+}
+.rev-box{
+    border-radius: 3px;
+    .panel{
+        border: none;
+        background: #ffffff;
+         padding: 0;
+    }
+    .score{
+        font-size: 1.2em;
+        font-weight: 500;
+        color: #990000;
+    }
+}
+
+.featured .rev-box .panel:hover{
+    background: $primary-color;
+    color: $primary-text-color;
+    box-shadow: 0 0 8px rgba(0,0,0,0.4);
+    h3{
+        color: $primary-text-color;
+    }
+}
+.rev-box .callout{
+    padding: 1.25rem;
+}
+.rev-box h3{
+    font-size: 25px;
+    color: #444;
+    padding: 0.5em 0;
+}
+.top-revs-list{
+    border-radius: 5px;
+}
+.top-revs-list .panel{
+    background: #fff;
+    border: none;
+}
+.review-list{
+    background: #ffffff;
+}
+.home-main-search{
+    padding: 2em 0 6em 0;
+    
+    background: #d2d2d2 url(http://static.eodev.com/files/dd0/dbbdb97d88df80fc7240df4f3a76e0d8.jpg);
+    background: #d2d2d2 url(http://birthday-cards.net/images/img6/wallpapers-search-hd-background-9.jpg);
+    background: #d2d2d2 url(http://freehdwallpaper.net/wp-content/uploads/2015/05/hd-galaxy-wallpaper-formation.jpg);
+    background: #d2d2d2 url(http://www.theplaidzebra.com/wp-content/uploads/2015/03/1_land-for-free-750x400.jpg);
+    background: #d2d2d2 url(http://hdwallpaperia.com/wp-content/uploads/2013/12/Great-Wallpapers-Free-Downloads.jpg);
+    
+    background-size: cover;
+    //background-position: 5%;
+    
+    &.panel{
+        border: none;
+    }
+    h2{
+        color: #ffffff;
+        padding: 1em;
+        font-family: 'Roboto Slab';
+        font-size: 4em;
+        font-weight: 200;
+        &::before{
+            content: " ";
+            display: block;
+            position: relative;
+            left: 50%;
+            top: 0;
+            width: 25px;
+            height: 5px;
+            background: #ffffff;
+        }
+    }
+    input, button {
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 300;
+        font-size: 1.5em;
+        height: 50px;
+    }
+}
+.review-details{
+    margin-top: 1rem;
+    font-family: 'Open Sans', sans-serif;
+    .title{
+        margin: 0.5em 0 1em 0;
+        font-family: 'Roboto Slab';
+        font-weight: 300;
+    }
+    p{
+        font-size: 1.1em;
+        line-height: 1.5;
+    }
+    
+}
+.main-content{
+    margin-top: 1em;
+}
+.recommended{
+    .title{
+        font-family: 'Roboto Slab';
+        font-weight: 100;
+        font-size: 2.5rem;
+    }
+}
+footer{
+    
+    color: #d2d2d2;
+    .footer-top{
+        background: #dbd8cf;
+    }
+    .panel{
+        background: none;
+    }
+    .footer-bottom{
+        background: #000000;
+        color: #ffffff;
+        padding: 0.5rem;
+    }
+}
+
+
+
+

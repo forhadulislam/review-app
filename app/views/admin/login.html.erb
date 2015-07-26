@@ -1,0 +1,13 @@
+<div class="admin-form">
+    <%= @user %>
+    <h1>Admin login</h1>
+    <form method="post">
+        <%= token_tag nil %>
+        <label>Email</label>
+        <input type="text" name="email" />
+        <label>Password</label>
+        <input type="password" name="password" />
+        
+        <button type="submit"> Login </button>
+    </form>
+</div>

@@ -1,0 +1,99 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @review.category %>
+</p>
+
+<p>
+  <strong>Sub category:</strong>
+  <%= @review.sub_category %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @review.title %>
+</p>
+
+<p>
+  <strong>Slug:</strong>
+  <%= @review.slug %>
+</p>
+
+<p>
+  <strong>Score:</strong>
+  <%= @review.score %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @review.price %>
+</p>
+
+<p>
+  <strong>Features:</strong>
+  <%= @review.features %>
+</p>
+
+<p>
+  <strong>Support:</strong>
+  <%= @review.support %>
+</p>
+
+<p>
+  <strong>Short description:</strong>
+  <%= @review.short_description %>
+</p>
+
+<p>
+  <strong>First paragraph:</strong>
+  <%= @review.first_paragraph %>
+</p>
+
+<p>
+  <strong>Second paragraph:</strong>
+  <%= @review.second_paragraph %>
+</p>
+
+<p>
+  <strong>Third paragraph:</strong>
+  <%= @review.third_paragraph %>
+</p>
+
+<p>
+  <strong>Top features:</strong>
+  <%= @review.top_features %>
+</p>
+
+<p>
+  <strong>Lowest price:</strong>
+  <%= @review.lowest_price %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= @review.image %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @review.url %>
+</p>
+
+<p>
+  <strong>Total viewed:</strong>
+  <%= @review.total_viewed %>
+</p>
+
+<p>
+  <strong>Is published:</strong>
+  <%= @review.is_published %>
+</p>
+
+<p>
+  <strong>Is featured:</strong>
+  <%= @review.is_featured %>
+</p>
+
+<%= link_to 'Edit', edit_review_path(@review) %> |
+<%= link_to 'Back', reviews_path %>

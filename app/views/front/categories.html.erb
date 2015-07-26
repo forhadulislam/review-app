@@ -1,0 +1,16 @@
+<div class="main-content">
+    <div class="row" data-equalizer>
+      <% @subCategories.each do |subCategory| %>  
+        <div class="large-4 medium-6 small-12 columns rev-box">
+            <div class="panel" data-equalizer-watch>
+                <img class="responsive" src="<%= subCategory.image %>">
+                <div class="callout">
+                    <h3> <%= subCategory.title %> </h3>
+                    <p><%= subCategory.description %></p>
+                    <a href="/<%= subCategory.category.slug %>/<%= subCategory.slug %>" class="small radius button">Read all reviews</a>          
+                </div>
+            </div>
+        </div>
+      <% end %>
+    </div>
+</div>
