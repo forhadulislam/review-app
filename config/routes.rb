@@ -13,8 +13,9 @@ Rails.application.routes.draw do
   root 'front#index'
   get '/category/:categorySlug'  => 'front#categories'
   
-  get '/:category/:subCategory' => 'front#subCategories'
-  get 'front/search'  => 'front#search'
+  get '/review/search'  => 'front#search'
+  get '/:categorySlug/:subCategorySlug' => 'front#subCategories'
+  
   
   get '/:reviewSlug'  => 'front#reviewDetails'
   get '/go/offer/:id'  => 'front#go'

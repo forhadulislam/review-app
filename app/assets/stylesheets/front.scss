@@ -8,22 +8,35 @@ $font-weight: 300;
 $primary-color: #71B238;
 $primary-text-color: #ffffff;
 
+$score-back-color: #CC3333;
+$score-text-color: #fff;
+
 body{
     font-family: 'Open Sans', sans-serif;
     margin: 0;
     background: #f1f1f1;
     background: #efebe3;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
+    text-rendering: optimizeLegibility !important;
+    -webkit-font-smoothing: antialiased !important;
 }
 h1,h2,h3,h4,h5,h6{
     font-family: 'Open Sans', sans-serif;
+    line-height: 1.5;
     font-weight: $font-weight;
 }
-
+a:hover{
+    color: #000;
+    background: none;
+}
 img.responsive {
   width: 100%;
 }
 .panel{
     background: #ffffff;
+}
+.thin{
+    font-weight: 100;
 }
 .panel:before, .panel:after{
     display: table;
@@ -52,18 +65,97 @@ nav.top-bar{
          padding: 0;
     }
     .score{
-        font-size: 1.2em;
-        font-weight: 500;
-        color: #990000;
+        font-size: 1.5em;
+        font-weight: 700;
+        display: inline-block;
+        background: $score-back-color;
+        color: $score-text-color;
+        border-radius: 8px;
+        padding: 1em;
+    }
+    .button{
+        font-family: 'Open Sans';
+        font-size: 1.4em;
+        font-weight: 100;
     }
 }
 
-.featured .rev-box .panel:hover{
-    background: $primary-color;
-    color: $primary-text-color;
-    box-shadow: 0 0 8px rgba(0,0,0,0.4);
-    h3{
+.subcat-heading, .search-heading{
+    font-family: 'Roboto Slab';
+    font-size: 3em;
+    font-weight: 300;
+    .thin{
+        font-weight: 100;
+    }
+}
+.subcat-review-list{
+    .panel:first-child{
+        border: 2px solid #A6635D;
+        .title a{
+            color: #A6635D;
+        }
+    }
+    .panel{
+        border: 2px solid #d2d2d2;
+        border-radius: 5px;
+    }
+}
+
+.revs{
+    .title a{
+        color: #587058;
+        font-size: 1.3em;
+    }
+    .description{
+        font-size: 1.2em;
+        line-height: 1.5;
+        font-weight: 300;
+    }
+    .our-score{
+        background: #f7c732;
+        margin-bottom: 0.5em;
+        border-radius: 5px;
+        font-family: "Roboto Slab";
+        .score{
+            font-size: 2em;
+            padding: 0.3em;
+            font-weight: 700;
+        }
+        .bottom{
+            background: #7C7062;
+            color: #ffffff;
+            padding: 0.5em;
+            border-radius: 0 0 5px 5px;
+        }
+    }
+}
+
+.rev-cat-bottom{
+    div{
+        background: #EED7D2;
+        padding: 0.5em;
+        font-weight: 300;
+        font-size: 20px;
+        font-weight: 400;
+    }
+    div:first-child{
+        background: #EFEBD6;
+        font-weight: 100;
+    }
+}
+.featured {
+    h2{
+        font-family: 'Roboto Slab';
+        font-size: 4em;
+        font-weight: 200; 
+    }
+    .rev-box .panel:hover{
+        background: #d2d2d2;
         color: $primary-text-color;
+        box-shadow: 0 0 8px rgba(0,0,0,0.4);
+        h3{
+            color: $primary-text-color;
+        }
     }
 }
 .rev-box .callout{
@@ -74,27 +166,14 @@ nav.top-bar{
     color: #444;
     padding: 0.5em 0;
 }
-.top-revs-list{
-    border-radius: 5px;
-}
-.top-revs-list .panel{
-    background: #fff;
-    border: none;
-}
+
 .review-list{
     background: #ffffff;
 }
-.home-main-search{
+.main-search{
     padding: 2em 0 6em 0;
-    
-    background: #d2d2d2 url(http://static.eodev.com/files/dd0/dbbdb97d88df80fc7240df4f3a76e0d8.jpg);
-    background: #d2d2d2 url(http://birthday-cards.net/images/img6/wallpapers-search-hd-background-9.jpg);
-    background: #d2d2d2 url(http://freehdwallpaper.net/wp-content/uploads/2015/05/hd-galaxy-wallpaper-formation.jpg);
-    background: #d2d2d2 url(http://www.theplaidzebra.com/wp-content/uploads/2015/03/1_land-for-free-750x400.jpg);
     background: #d2d2d2 url(http://hdwallpaperia.com/wp-content/uploads/2013/12/Great-Wallpapers-Free-Downloads.jpg);
-    
     background-size: cover;
-    //background-position: 5%;
     
     &.panel{
         border: none;
@@ -123,9 +202,51 @@ nav.top-bar{
         height: 50px;
     }
 }
+.top-revs-list{
+    
+    border-radius: 5px;
+    
+    .panel{
+        background: #fff;
+        border: none;
+    }
+    .heading{
+        margin-bottom: 1em;
+        border-bottom: 1px solid $primary-color;
+        color: $primary-color;
+        padding: 0.3em;
+    }
+    .latest-reviews{
+        font-size: 1.3em;
+        margin-bottom: 1em;
+        .score{
+            padding: 0.5em;
+            font-size: 1.4em;
+            background: $score-back-color;
+            color: $score-text-color;
+        }
+        .title{
+            
+        }
+    }
+}
+
+.inner-search{
+    padding-top: 3em;
+    &.panel{
+        background: rgba(255,255,255,0.5);
+    }
+}
 .review-details{
     margin-top: 1rem;
     font-family: 'Open Sans', sans-serif;
+    .left .panel{
+        border-top: 3px solid $primary-color;
+    }
+    .right .panel{
+        border-top: 3px solid #F37E71;
+        box-shadow: 0 0 8px rgba(0,0,0,0.12);
+    }
     .title{
         margin: 0.5em 0 1em 0;
         font-family: 'Roboto Slab';
@@ -134,6 +255,29 @@ nav.top-bar{
     p{
         font-size: 1.1em;
         line-height: 1.5;
+    }
+    .info{
+        .price{
+            font-family: 'Roboto Slab';
+            font-size: 4em;
+            font-weight: 300;
+            border-top: 1px solid #d2d2d2;
+            border-bottom: 1px solid #d2d2d2;
+            padding: 0.3em 0;
+        }
+        .all-ratings{
+            margin: 1.5em 0;
+            .rating{
+                margin-top: 0.8em;
+            }
+            .progress {
+                background-color: #aaa;
+                border: 1px solid #fff;
+                height: 1rem;
+                margin-bottom: 0.625rem;
+                padding: 0;
+            }
+        }
     }
     
 }
@@ -151,13 +295,18 @@ footer{
     
     color: #d2d2d2;
     .footer-top{
-        background: #dbd8cf;
+        background: #494949;
+        .title{
+            color: #B0B0B0;
+        }
     }
     .panel{
         background: none;
+        border: none;
     }
     .footer-bottom{
-        background: #000000;
+        background: #353535;
+        border-top: 1px solid #222;
         color: #ffffff;
         padding: 0.5rem;
     }

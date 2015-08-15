@@ -1,138 +1,87 @@
 <div class="row review-details">
-    
-        <div class="large-8 columns">
+        <div class="large-12 columns">
+            <ul class="breadcrumbs">
+              <li><a href="/">Home</a></li>
+              <li><a href="/category/<%= @review.category.slug %>"><%= @review.category.title %></a></li>
+              <li><a href="/<%= @review.category.slug %>/<%= @review.sub_category.slug %>"><%= @review.sub_category.title %></a></li>
+            </ul>
+        </div>
+        <div class="large-8 columns left">
             <div class="panel">
                 <h2 class="title"><%= @review.title %></h2>
                 <p>
                    <%= @review.short_description %>
                 </p>
-                <div class="panel text-center">
+                <div class="text-center">
                     <a href="/go/offer/<%= @review.id %>" class="button" target="_blank">Visit Site</a>
                 </div>
                 
                 <p>
                     <%= @review.first_paragraph %>
                 </p>
-                <div class="panel text-center">
-                    <a href="/go/offer/<%= @review.id %>" class="button" target="_blank">Visit Site</a>
-                </div>
                 
                 <p>
                     <%= @review.second_paragraph %>
                 </p>
-                <div class="panel text-center">
-                    <a href="/go/offer/<%= @review.id %>" class="button" target="_blank">Visit Site</a>
-                </div>
                 
                 <p>
                     <%= @review.third_paragraph %>
                 </p>
-                <div class="panel text-center">
+                <div class="text-center">
                     <a href="/go/offer/<%= @review.id %>" class="button" target="_blank">Visit Site</a>
                 </div>
                 
             </div>
         </div>
-        <div class="large-4 columns">
-            <div class="panel">
+        <div class="large-4 columns right">
+            <div class="panel info">
+                <div class="large-6 large-centered columns">
+                    <a href="/go/offer/<%= @review.id %>" target="_blank"><img src="<%= @review.image %>" class="responsive"></a>
+                </div>
+                <h2 class="text-center price">$<%= @review.lowest_price %></h2>
                 
-                <h3>Ratings</h3>
-                
-                 Our rating: 8.4 / 10
-                 <div class="progress small-12 large-12 alert round">
-                  <span class="meter" style="width: 84%"></span>
+                <div class="all-ratings">
+                    <h3 class="heading">Ratings</h3>
+                    
+                    <div class="rating">Score: <%= @review.score %> / 10</div>
+                    <div class="progress small-12 large-12 alert">
+                      <span class="meter" style="width: <%= @review.score * 10 %>%"></span>
+                    </div>
+                    
+                    <div class="rating">Price: <%= @review.price %> / 10</div>
+                    <div class="progress small-12 large-12 alert">
+                      <span class="meter" style="width: <%= @review.price * 10 %>%"></span>
+                    </div>
+                    
+                    <div class="rating">Feature: <%= @review.features %> / 10</div>
+                    <div class="progress small-12 large-12 alert">
+                      <span class="meter" style="width: <%= @review.features * 10 %>%"></span>
+                    </div>
+                    
+                    <div class="rating">Support: <%= @review.support %> / 10</div>
+                    <div class="progress small-12 large-12 alert">
+                      <span class="meter" style="width: <%= @review.support * 10 %>%"></span>
+                    </div>
                 </div>
                 
-                 Price: 6.0 / 10
-                 <div class="progress small-12 large-12 alert round">
-                  <span class="meter" style="width: 60%"></span>
-                </div>
-                
-                 Support: 7.5 / 10
-                 <div class="progress small-12 large-12 alert round">
-                  <span class="meter" style="width: 75%"></span>
-                </div>
-                
-                <a href="#" class="button expand">Visit Site</a>
+                <a href="/go/offer/<%= @review.id %>" target="_blank" class="button expand">Visit Site</a>
             </div>
         </div>
 </div>
 
 <div class="row recommended">
     <div class="large-12 text-center" data-equalizer>
-            <h2 class="title">Recommended Reviews</h2>
-            
+        <h2 class="title">Recommended Reviews</h2>
+       
+        <% @recommendedReviews.each do |rReview| %> 
             <div class="large-3 medium-6 small-12 columns rev-box">
                 <div class="panel" data-equalizer-watch>
-                    <img class="responsive" src="http://placehold.it/300x250&amp;text=[things]">
+                    <img class="responsive" src="<%= rReview.image %>" alt="<%= rReview.title %>">
                     <div class="callout">
-                        <h3>SEO Tool Reviews</h3>
+                        <h3><a href="/<%= rReview.slug %>"> <%= rReview.title %> </a></h3>
                     </div>
                 </div>
             </div>
-            
-            <div class="large-3 medium-6 small-12 columns rev-box">
-                <div class="panel" data-equalizer-watch>
-                    <img class="responsive" src="http://placehold.it/300x250&amp;text=[things]">
-                    <div class="callout">
-                        <h3>SEO Tool Reviews</h3>       
-                    </div>
-                </div>
-            </div>
-            
-            <div class="large-3 medium-6 small-12 columns rev-box">
-                <div class="panel" data-equalizer-watch>
-                    <img class="responsive" src="http://placehold.it/300x250&amp;text=[things]">
-                    <div class="callout">
-                        <h3>SEO Tool Reviews</h3>        
-                    </div>
-                </div>
-            </div>
-            
-            <div class="large-3 medium-6 small-12 columns rev-box">
-                <div class="panel" data-equalizer-watch>
-                    <img class="responsive" src="http://placehold.it/300x250&amp;text=[things]">
-                    <div class="callout">
-                        <h3>VPS Reviews</h3>
-                        
-                    </div>
-                </div>
-            </div>
-            
-            <div class="large-3 medium-6 small-12 columns rev-box">
-                <div class="panel" data-equalizer-watch>
-                    <img class="responsive" src="http://placehold.it/300x250&amp;text=[things]">
-                    <div class="callout">
-                        <h3>SEO Tool Reviews</h3>        
-                    </div>
-                </div>
-            </div>
-            
-            <div class="large-3 medium-6 small-12 columns rev-box">
-                <div class="panel" data-equalizer-watch>
-                    <img class="responsive" src="http://placehold.it/300x250&amp;text=[things]">
-                    <div class="callout">
-                        <h3>VPN Reviews</h3>        
-                    </div>
-                </div>
-            </div>
-            
-            <div class="large-3 medium-6 small-12 columns rev-box">
-                <div class="panel" data-equalizer-watch>
-                    <img class="responsive" src="http://placehold.it/300x250&amp;text=[things]">
-                    <div class="callout">
-                        <h3>SEO Tool Reviews</h3>        
-                    </div>
-                </div>
-            </div>
-            
-            <div class="large-3 medium-6 small-12 columns rev-box">
-                <div class="panel" data-equalizer-watch>
-                    <img class="responsive" src="http://placehold.it/300x250&amp;text=[things]">
-                    <div class="callout">
-                        <h3>SEO Tool Reviews</h3>        
-                    </div>
-                </div>
-            </div>
+        <% end %>
     </div>
 </div>
