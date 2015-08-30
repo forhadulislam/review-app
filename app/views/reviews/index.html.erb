@@ -27,15 +27,16 @@
         <td><%= review.sub_category.title %></td>
         <td><%= review.title %></td>
         
-        <td>Score : <%= review.score %>
-            Price: <%= review.price %>
-            Features: <%= review.features %>
-            Support: <%= review.support %>
+        <td>
+            <div>Score : <%= review.score %></div>
+            <div>Price: <%= review.price %></div>
+            <div>Features: <%= review.features %></div>
+            <div>Support: <%= review.support %></div>
         </td>
         
         <td><%= review.lowest_price %></td>
         
-        <td> <%= review.url %> </td>
+        <td> <a href="<%= review.url %>" target="_blank">Link</a> </td>
         <td><%= review.total_viewed %></td>
         <td><%= review.is_published %></td>
         <td><%= review.is_featured %></td>

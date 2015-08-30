@@ -83,7 +83,7 @@
                 <% @latestReviews.each do |lReview| %>
                     <div class="large-12 medium-4 small-12 columns latest-reviews">
                         <div class="large-3 columns score"><%= lReview.score %></div>
-                        <div class="large-9 columns title"><%= lReview.title %></div>
+                        <div class="large-9 columns title"><a href="/<%= lReview.slug %>"> <%= lReview.title %> </a></div>
                     </div>
                 <% end %>
                 

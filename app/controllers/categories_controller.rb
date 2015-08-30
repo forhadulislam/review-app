@@ -1,4 +1,6 @@
+require "methods"
 class CategoriesController < ApplicationController
+  before_action :checkadmin
   before_action :set_category, only: [:show, :edit, :update, :destroy]
 
   # GET /categories
@@ -69,6 +71,6 @@ class CategoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def category_params
-      params.require(:category).permit(:title, :total_viewed, :slug, :image)
+      params.require(:category).permit(:title, :description, :total_viewed, :slug, :image)
     end
 end

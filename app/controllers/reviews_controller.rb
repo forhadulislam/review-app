@@ -1,4 +1,6 @@
+require "methods"
 class ReviewsController < ApplicationController
+  before_action :checkadmin
   before_action :set_review, only: [:show, :edit, :update, :destroy]
 
   # GET /reviews
@@ -71,4 +73,5 @@ class ReviewsController < ApplicationController
     def review_params
       params.require(:review).permit(:category_id, :sub_category_id, :title, :slug, :score, :price, :features, :support, :short_description, :first_paragraph, :second_paragraph, :third_paragraph, :top_features, :lowest_price, :image, :url, :total_viewed, :is_published, :is_featured)
     end
+    
 end

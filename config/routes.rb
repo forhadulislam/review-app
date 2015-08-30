@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  
   get '/manager-admin/login'  => 'admin#login'
   post '/manager-admin/login'  => 'admin#login'
   get '/manager-admin/logout'  => 'admin#logout'
@@ -8,9 +9,12 @@ Rails.application.routes.draw do
   resources :categories, path: '/manager-admin/categories'
   resources :users, path: '/manager-admin/users'
   resources :sub_categories, path: '/manager-admin/sub-categories'
+  resources :sites, path: '/manager-admin/sites'
   
   # You can have the root of your site routed with "root"
   root 'front#index'
+  get 'feed' => 'front#feed'
+  get "sitemap" => "front#sitemap", format: :xml, as: :sitemap
   get '/category/:categorySlug'  => 'front#categories'
   
   get '/review/search'  => 'front#search'
@@ -19,6 +23,7 @@ Rails.application.routes.draw do
   
   get '/:reviewSlug'  => 'front#reviewDetails'
   get '/go/offer/:id'  => 'front#go'
+  
   
   
   # The priority is based upon order of creation: first created -> highest priority.

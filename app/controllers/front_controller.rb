@@ -5,6 +5,8 @@ class FrontController < ApplicationController
     before_filter :common_data
     
     def index
+        @title = "Current title"
+        
         @subCategories = SubCategory.limit(6)
         @featuredReviews = Review.limit(8)
         
@@ -16,6 +18,10 @@ class FrontController < ApplicationController
         @slug = params[:categorySlug]
         @category = Category.find_by slug: @slug
         @subCategories = SubCategory.where("category_id = ?", @category.id)
+        @subtitle = @category.title
+        @description = @category.description
+        
+        @image = @category.image
     end
     
     def subCategories
@@ -23,7 +29,12 @@ class FrontController < ApplicationController
         @subCatSlug = params[:subCategorySlug]
         @category = Category.find_by slug: @catSlug
         @subCategory = SubCategory.find_by slug: @subCatSlug
+        @subtitle = @subCategory.title
+        @description = @subCategory.description
+        
         @reviews = Review.where("sub_category_id = ?", @subCategory.id).order(score: :desc)
+        
+        @image = @subCategory.image
     end
     
     def search
@@ -38,6 +49,8 @@ class FrontController < ApplicationController
     def reviewDetails
         @slug = params[:reviewSlug]
         @review = Review.find_by slug: @slug
+        @subtitle = @review.title
+        @description = @review.short_description
         
         @recommendedReviews = Review.where("id != ? AND sub_category_id = ? AND is_published = ?", @review.id, @review.sub_category_id, "yes").limit(8)
     end
@@ -49,7 +62,31 @@ class FrontController < ApplicationController
         redirect_to @url
     end
     
+    def sitemap
+        @base_url = [root_url]
+    
+        @reviews = Review.all
+        @categories = Category.all
+        @subCategories = SubCategory.all
+    
+        respond_to do |format|
+          format.xml
+        end
+      end
+    
+    def feed
+        @posts = Review.order(:created_at).limit(50)
+        respond_to do |format|
+          format.rss { render :layout => false }
+        end
+    end
+    
     def common_data
+      @site = Site.order(:created_at).last
+      @description = @site.description
+      @image = @site.image
+      @url = request.original_url
+        
       @headerCategories = Category.limit(15)
       @headerSubCategories = SubCategory.limit(15)
       

@@ -1,30 +1,57 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-US" prefix="og: http://ogp.me/ns#">
 <head>
-  <title>99 Reviews</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><% if defined?(@subtitle) %> <%= @subtitle %> - <% end %><%= @site.title %></title>
+    <link rel="profile" href="http://gmpg.org/xfn/11">
+    
+    <meta name="description" content="<%= @description %>"/>
+    <link rel="canonical" href="<%= @site.url %>" />
+    <link rel="next" href="http://jstricks.com/page/2/" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+    
+    <meta property="og:title" content="<%= @site.title %>" />
+    <meta property="og:description" content="<%= @description %>" />
+    <meta property="og:url" content="<%= @url %>" />
+    <meta property="og:site_name" content="<%= @site.title %>" />
+    <meta property="og:image" content="<%= @image %>" />
+    
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "WebSite",
+        "url": "<%= @site.url %>",
+        "name": "<%= @site.title %>",
+        "potentialAction":{"@type":"SearchAction","target":"<%= @site.url %>/?s={search_term_string}",
+        "query-input":"required name=search_term_string"}
+      }
+    </script>
+    <%= @site.meta_tags.html_safe %>
+    
+    <link rel="alternate" type="application/rss+xml" title="<%= @site.title %> &raquo; Feed" href="<%= @site.url %>/feed.rss" />
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-   
-        
         <nav class="top-bar" data-topbar role="navigation">
             <div class="large-10 large-centered columns">
-              <ul class="title-area">
+              <ul class="title-area large-3">
                 <li class="name">
-                  <h1><a href="/">99 Reviews</a></h1>
+                  <h1><a href="/"><img src="/99reviews.png" id="logo" /></a></h1>
                 </li>
                  <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
                 <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
               </ul>
         
-              <section class="top-bar-section">
+              <section class="top-bar-section large-6 right">
                 <!-- Right Nav Section -->
                 <ul class="left">
                   
                   <li class="has-dropdown">
-                    <a href="#">Categories</a>
+                    <a href="#"><i class="fa fa-bars"></i> Categories</a>
                     <ul class="dropdown">
                         <% @headerCategories.each do |hCategory| %>
                           <li><a href="/category/<%= hCategory.slug %>"> <%= hCategory.title %> </a></li>
@@ -62,18 +89,6 @@
                     
                     <div class="large-4 columns">
                         <div class="panel">
-                            <h4 class="title">Top Categories</h4>
-                            <ul class="side-nav">
-                              <li><a href="#">Link 1</a></li>
-                              <li><a href="#">Link 2</a></li>
-                              <li><a href="#">Link 3</a></li>
-                              <li><a href="#">Link 4</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="large-4 columns">
-                        <div class="panel">
                             <h4 class="title">Most Popular Reviews</h4>
                             <ul class="side-nav">
                             <% @footerPopularReviews.each do |fPopReviews| %>
@@ -83,6 +98,30 @@
                         </div>
                     </div>
                     
+                    <div class="large-4 columns footer-highlight">
+                        <div class="panel">
+                            <div class="large-12">
+                                <h3 class="text-center">
+                                    <i class="fa fa-facebook"></i>
+                                    <i class="fa fa-twitter"></i>
+                                    <i class="fa fa-google-plus"></i>
+                                    <i class="fa fa-youtube"></i>
+                                </h3>
+                            </div>
+                            <div class="large-12">
+                                <img src="99reviews-footer.png" />
+                            </div>
+                            
+                            <div class="large-12 text-center">
+                                <h5>
+                                    Built with <i class="fa fa-heart-o" data-tooltip aria-haspopup="true" class="has-tip" title="Love and Care"></i> 
+                                    <i class="fa fa-html5" data-tooltip aria-haspopup="true" class="has-tip" title="HTML5"></i> 
+                                    <i class="fa fa-css3" data-tooltip aria-haspopup="true" class="has-tip" title="CSS3"></i>
+                                
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
                     
                     </div>
                 </div>
