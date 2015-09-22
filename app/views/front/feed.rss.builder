@@ -30,7 +30,7 @@ xml.rss :version => "2.0" do
               "
             text = image_tag
         end
-        xml.description article.short_description
+        xml.description strip_tags(article.short_description)
 
       end
     end

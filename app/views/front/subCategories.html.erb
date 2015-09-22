@@ -22,7 +22,7 @@
                                 
                                 <div class="large-2 medium-2 small-12 columns">
                                     <a href="/go/offer/<%= review.id %>" target="_blank">
-                                        <img class="responsive" src="<%= review.image %>">
+                                        <img class="responsive" src="<%= review.image %>" alt="<%= review.title %>">
                                     </a>
                                 </div>
                                 
@@ -34,14 +34,14 @@
                                 
                                 <div class="large-6 medium-6 small-12 columns">
                                     <p class="description">
-                                        <%= review.short_description %>
+                                        <%=strip_tags review.short_description %>
                                     </p>
                                 </div>
                                 
                                 <div class="large-2 medium-2 small-12 columns text-center">
                                     
                                     <div class="our-score">
-                                        <h3 class="score"><%= review.score %></h3>
+                                        <h3 class="score"><i class="fa fa-star"></i> <%= review.score %></h3>
                                         <div class="bottom">Our score</div>
                                     </div>
                                     

@@ -23,7 +23,7 @@ xml.tag! 'urlset', 'xmlns' => 'http://www.sitemaps.org/schemas/sitemap/0.9' do
   end
   @reviews.each do |series|
     xml.url {
-      xml.loc @site.url
+      xml.loc @site.url + "/" + series.slug
       xml.lastmod series.updated_at.strftime("%F")
       xml.changefreq("weekly")
       xml.priority(0.5)

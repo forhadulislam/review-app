@@ -6,18 +6,18 @@
     <title><% if defined?(@subtitle) %> <%= @subtitle %> - <% end %><%= @site.title %></title>
     <link rel="profile" href="http://gmpg.org/xfn/11">
     
-    <meta name="description" content="<%= @description %>"/>
+    <meta name="description" content="<%=strip_tags @description %>"/>
     <link rel="canonical" href="<%= @site.url %>" />
-    <link rel="next" href="http://jstricks.com/page/2/" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="website" />
     
     <meta property="og:title" content="<%= @site.title %>" />
-    <meta property="og:description" content="<%= @description %>" />
+    <meta property="og:description" content="<%=strip_tags @description %>" />
     <meta property="og:url" content="<%= @url %>" />
     <meta property="og:site_name" content="<%= @site.title %>" />
-    <meta property="og:image" content="<%= @image %>" />
+    <meta property="og:image" content="<%= @site.url %><%= @image %>" />
     
+    <% if @home==1 %>
     <script type="application/ld+json">
       {
         "@context": "http://schema.org",
@@ -28,54 +28,62 @@
         "query-input":"required name=search_term_string"}
       }
     </script>
+    <% end %>
+    
     <%= @site.meta_tags.html_safe %>
     
-    <link rel="alternate" type="application/rss+xml" title="<%= @site.title %> &raquo; Feed" href="<%= @site.url %>/feed.rss" />
+  <link rel="alternate" type="application/rss+xml" title="<%= @site.title %> &raquo; Feed" href="<%= @site.url %>/feed.rss" />
+  
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  
+  
+  
   <%= csrf_meta_tags %>
 </head>
 <body>
+        
         <nav class="top-bar" data-topbar role="navigation">
             <div class="large-10 large-centered columns">
-              <ul class="title-area large-3">
+              <ul class="title-area large-4">
                 <li class="name">
-                  <h1><a href="/"><img src="/99reviews.png" id="logo" /></a></h1>
+                  <h1><a href="/"><img src="<%= @site.logo %>" id="logo" /></a></h1>
                 </li>
                  <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
                 <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
               </ul>
         
-              <section class="top-bar-section large-6 right">
+              <section class="top-bar-section large-6">
                 <!-- Right Nav Section -->
                 <ul class="left">
                   
                   <li class="has-dropdown">
-                    <a href="#"><i class="fa fa-bars"></i> Categories</a>
+                    <a href="#"><i class="fa fa-th"></i> Categories</a>
                     <ul class="dropdown">
                         <% @headerCategories.each do |hCategory| %>
                           <li><a href="/category/<%= hCategory.slug %>"> <%= hCategory.title %> </a></li>
                         <% end %>
                     </ul>
                   </li>
+                  
+                  <li class="has-dropdown">
+                    <a href="#"><i class="fa fa-location-arrow"></i> Top reviews</a>
+                    <ul class="dropdown">
+                        <% @headerPopularReviews.each do |hPopReviews| %>
+                          <li><a href="/<%= hPopReviews.slug %>"><%= hPopReviews.title %></a></li>
+                        <% end %>
+                    </ul>
+                  </li>
                 </ul>
-            
               </section>
             </div>
         </nav>
     
         
             <%= yield %>
-        
-        
-   
-    
-    
-    <footer>
-        
+        <footer>
             <div class="large-12 footer-top">
                 <div class="row">
-                    
                     <div class="large-4 columns">
                         <div class="panel">
                             <h4 class="title">Browse top categories</h4>
@@ -102,14 +110,14 @@
                         <div class="panel">
                             <div class="large-12">
                                 <h3 class="text-center">
-                                    <i class="fa fa-facebook"></i>
-                                    <i class="fa fa-twitter"></i>
-                                    <i class="fa fa-google-plus"></i>
-                                    <i class="fa fa-youtube"></i>
+                                    <% if defined?(@site.facebook_url) %> <a href="<%= @site.facebook_url %>" target="_blank"><i class="fa fa-facebook"></i></a><% end %>
+                                    <% if defined?(@site.twitter_url) %> <a href="<%= @site.twitter_url %>" target="_blank"><i class="fa fa-twitter"></i></a><% end %>
+                                    <% if defined?(@site.gplus_url) %> <a href="<%= @site.gplus_url %>" target="_blank"><i class="fa fa-google-plus"></i></a><% end %>
+                                    <% if defined?(@site.youtube_url) %> <a href="<%= @site.youtube_url %>" target="_blank"><i class="fa fa-youtube"></i></a><% end %>
                                 </h3>
                             </div>
                             <div class="large-12">
-                                <img src="99reviews-footer.png" />
+                                <img src="<%= @site.footer_logo %>" />
                             </div>
                             
                             <div class="large-12 text-center">
@@ -127,7 +135,7 @@
                 </div>
             </div>
             <div class="large-12 text-center columns footer-bottom">
-                Copyright © 2009-2015 99 Reviews. All Rights Reserved.
+                Copyright © 2015 99 Reviews. All Rights Reserved.
             </div>
         </div>
     </footer>

@@ -6,12 +6,12 @@
             <div class="large-8 large-centered columns">
                 <div class="row collapse">
                     
-                        <div class="large-10 columns">
-                          <input type="text" name="q" required placeholder="Search by keyword">
-                        </div>
-                        <div class="large-2 columns">
-                          <button class="button postfix">Search</button>
-                        </div>
+                    <div class="large-10 columns">
+                      <input type="text" name="q" required placeholder="Search by keyword">
+                    </div>
+                    <div class="large-2 columns">
+                      <button class="button postfix">Search</button>
+                    </div>
                    
                 </div>
             </div>
@@ -23,7 +23,9 @@
     <% @subCategories.each do |sub| %>
         <div class="large-4 medium-6 small-12 columns rev-box">
             <div class="panel text-center" data-equalizer-watch>
-                <img class="responsive" src="<%= sub.image %>">
+                <a href="/<%= sub.category.slug %>/<%= sub.slug %>">
+                    <img class="responsive" src="<%= sub.image %>" alt="<%= sub.title %>">
+                </a>
                 <div class="callout">
                     <h3><%= sub.title %></h3>
                     <p> <%= sub.description %> </p>
@@ -40,7 +42,9 @@
         <% @featuredReviews.each do |freview| %>
             <div class="large-3 medium-6 small-12 columns rev-box">
                 <div class="panel" data-equalizer-watch>
-                    <img class="responsive" src="<%= freview.image %>">
+                    <a href="<%= freview.slug %>">
+                        <img class="responsive" src="<%= freview.image %>" alt="<%= freview.title %>">
+                    </a>
                     <div class="callout">
                         <h3><a href="<%= freview.slug %>"> <%= freview.title %> </a></h3>
                         <h4 class="score"><%= freview.score %></h4>
@@ -62,7 +66,9 @@
                     <div class="large-4 medium-4 small-12 columns revs">
                         <div class="panel" data-equalizer-watch>
                             
-                            <img class="responsive" src="<%= topProduct.image %>">
+                            <a href="/<%= topProduct.slug %>">
+                                <img class="responsive" src="<%= topProduct.image %>" alt="<%= topProduct.title %>">
+                            </a>
                             <h3><a href="/<%= topProduct.slug %>"> <%= topProduct.title %> </a></h3>
                             
                         </div>

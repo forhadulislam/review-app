@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   
+  
   get '/manager-admin/login'  => 'admin#login'
   post '/manager-admin/login'  => 'admin#login'
   get '/manager-admin/logout'  => 'admin#logout'
@@ -10,6 +11,7 @@ Rails.application.routes.draw do
   resources :users, path: '/manager-admin/users'
   resources :sub_categories, path: '/manager-admin/sub-categories'
   resources :sites, path: '/manager-admin/sites'
+  resources :images, path: '/manager-admin/images'
   
   # You can have the root of your site routed with "root"
   root 'front#index'

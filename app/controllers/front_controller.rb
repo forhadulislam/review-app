@@ -6,12 +6,13 @@ class FrontController < ApplicationController
     
     def index
         @title = "Current title"
+        @home = 1
         
         @subCategories = SubCategory.limit(6)
-        @featuredReviews = Review.limit(8)
+        @featuredReviews = Review.where("is_featured == ? AND is_published = ?", "yes", "yes").limit(8)
         
-        @topProducts = Review.limit(6)
-        @latestReviews = Review.limit(6)
+        @topProducts = Review.where("is_published = ?", "yes").order(score: :desc).limit(6)
+        @latestReviews = Review.where("is_published = ?", "yes").order(created_at: :desc).limit(6)
     end
     
     def categories
@@ -20,6 +21,8 @@ class FrontController < ApplicationController
         @subCategories = SubCategory.where("category_id = ?", @category.id)
         @subtitle = @category.title
         @description = @category.description
+        
+        Category.increment_counter(:total_viewed, @category.id)
         
         @image = @category.image
     end
@@ -32,7 +35,9 @@ class FrontController < ApplicationController
         @subtitle = @subCategory.title
         @description = @subCategory.description
         
-        @reviews = Review.where("sub_category_id = ?", @subCategory.id).order(score: :desc)
+        SubCategory.increment_counter(:total_viewed, @subCategory.id)
+        
+        @reviews = Review.where("sub_category_id = ? AND is_published = ?", @subCategory.id, "yes").order(score: :desc)
         
         @image = @subCategory.image
     end
@@ -41,16 +46,21 @@ class FrontController < ApplicationController
         @query = query = params[:q]
         if !@query
             redirect_to root_url
-            @query = "This is me"
         end
-        @reviews = Review.where("title LIKE ? OR short_description LIKE ?", "%#{query}%", "%#{query}%").limit(50)
+        @reviews = Review.where("(title LIKE ? OR short_description LIKE ?) AND is_published = ?", "%#{query}%", "%#{query}%", "yes").limit(50)
     end
     
     def reviewDetails
         @slug = params[:reviewSlug]
-        @review = Review.find_by slug: @slug
-        @subtitle = @review.title
-        @description = @review.short_description
+        begin
+            @review = Review.where("is_published = ?", "yes").find_by slug: @slug
+            @subtitle = @review.title
+            @description = @review.short_description
+        rescue
+            raise ActionController::RoutingError.new('Not Found')
+        end
+        
+        Review.increment_counter(:total_viewed, @review.id)
         
         @recommendedReviews = Review.where("id != ? AND sub_category_id = ? AND is_published = ?", @review.id, @review.sub_category_id, "yes").limit(8)
     end
@@ -75,7 +85,7 @@ class FrontController < ApplicationController
       end
     
     def feed
-        @posts = Review.order(:created_at).limit(50)
+        @posts = Review.where("is_published = ?", "yes").order(:created_at).limit(50)
         respond_to do |format|
           format.rss { render :layout => false }
         end
@@ -86,11 +96,12 @@ class FrontController < ApplicationController
       @description = @site.description
       @image = @site.image
       @url = request.original_url
+      @home = 0
         
-      @headerCategories = Category.limit(15)
-      @headerSubCategories = SubCategory.limit(15)
+      @headerCategories = Category.limit(12)
+      @headerPopularReviews = Review.where("is_published = ?", "yes").order(score: :desc).limit(6)
       
       @footerCategories = Category.limit(6)
-      @footerPopularReviews = Review.limit(6)
+      @footerPopularReviews = Review.where("is_published = ?", "yes").order(score: :desc).limit(6)
     end
 end
